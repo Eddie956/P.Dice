@@ -1,5 +1,5 @@
 // Bussiness logic
-var participantsArray = []
+var competitorsArray = []
 var turnRollArray = []
 
 function Competitors(participantName, score) {
@@ -19,7 +19,7 @@ $(document).ready(function() {
         var ParticipantTwoName = $("#contender2Name").val();
         var ParticipantOne = new Contender(ParticipantOneName, 0);
         var ParticipantTwo = new Contender(ParticipantTwoName, 0);
-        $("#contener1Display").text(participantsArray[0].participantName + "'s turn").show();
+        $("#contener1Display").text(competitorsArray[0].participantName + "'s turn").show();
         showNamesAndScores();
         $("form").hide();
         $(".gameStuff").show();
@@ -34,71 +34,71 @@ $(document).ready(function() {
           turnRollArray.push(randomRoll);
           $("#turnTotal").text(turnRollArray.sum());
         } else {
-          rollOneChangePlayers();
+          rollOneChangeCompetitors();
         }
       });
       $("#endTurn").click(function(event) {
-        changePlayers();
+        changeCompetitors();
         if(playersArray[0].score >= 100) {
-          alert(playersArray[0].playerName + " wins!!");
+          alert(CompetitorsArray[0].participantName + " wins!!");
           document.location.reload(true);
-        } else if(playersArray[1].score >= 100) {
-          alert(playersArray[1].playerName + " wins!!");
+        } else if(competitorsArray[1].score >= 100) {
+          alert(competitorsArray[1].playerName + " wins!!");
           document.location.reload(true);
         }
       });
 
       function showNamesAndScores() {
-        $("#playerOneName").text(playersArray[0].playerName);
-        $("#playerTwoName").text(playersArray[1].playerName);
-        $("#playerOneTotalScore").text(playersArray[0].score);
-        $("#playerTwoTotalScore").text(playersArray[1].score);
+        $("#contender1Name").text(contendersArray[0].playerName);
+        $("#contender2Name").text(contendersArray[1].playerName);
+        $("#contender1TotalScore").text(contendersArray[0].score);
+        $("#contender2TotalScore").text(contendersArray[1].score);
       }
 
       function rollOneChangePlayers() {
-        if($("#player1Display").is(":visible")) {
+        if($("#contender1Display").is(":visible")) {
           turnRollArray = [0];
           $("#turnTotal").text(turnRollArray);
           setTimeout(function() {
             alert("YOU ROLLED A 1- NO POINTS!!");
           }, 50);
           setTimeout(function() {
-            $("#player2Display").text(playersArray[1].playerName + "'s turn").show();
+            $("#contender2Display").text(playersArray[1].playerName + "'s turn").show();
           }, 100);
-          $("#player1Display").hide();
+          $("#contender1Display").hide();
           showNamesAndScores();
-        } else if($("#player2Display").is(":visible")) {
+        } else if($("#contender2Display").is(":visible")) {
           turnRollArray = [0];
           $("#turnTotal").text(turnRollArray);
           setTimeout(function() {
             alert("YOU ROLLED A 1- NO POINTS!!");
           }, 50);
           setTimeout(function() {
-            $("#player1Display").text(playersArray[0].playerName + "'s turn").show();
+            $("#contender1Display").text(playersArray[0].playerName + "'s turn").show();
           }, 100);
-          $("#player2Display").hide();
+          $("#contender2Display").hide();
           showNamesAndScores();
         }
       }
 
       function changePlayers() {
-        if($("#player1Display").is(":visible")) {
-          playersArray[0].score = (playersArray[0].score += turnRollArray.sum());
-          alert("Congrats, " + playersArray[0].playerName + ", you got " + turnRollArray.sum() + " points!");
+        if($("#contender1Display").is(":visible")) {
+          competitorsArray[0].score = (competitorsArray[0].score += turnRollArray.sum());
+          alert("Congrats, " + competitorsArray[0].playerName + ", you got " + turnRollArray.sum() + " points!");
           turnRollArray = [0];
           $("#turnTotal").text(turnRollArray)
-          $("#player1Display").hide();
-          $("#player2Display").text(playersArray[1].playerName + "'s turn").show();
+          $("#contender1Display").hide();
+          $("#contender2Display").text(playersArray[1].playerName + "'s turn").show();
           console.log(playersArray[0].score);
           showNamesAndScores();
         } else {
           alert("Congrats, " + playersArray[1].playerName + ", you got " + turnRollArray.sum() + " points!");
-          playersArray[1].score = (playersArray[1].score += turnRollArray.sum());
+          competitorsArray[1].score = (competitorsArray[1].score += turnRollArray.sum());
           turnRollArray = [0];
           $("#turnTotal").text(turnRollArray)
-          $("#player2Display").hide();
-          $("#player1Display").text(playersArray[0].playerName + "'s turn").show();
+          $("#contender2Display").hide();
+          $("#contender1Display").text(competitorsArray[0].playerName + "'s turn").show();
           showNamesAndScores();
-          console.log(playersArray[1].score);
+          console.log(competitorsArray[1].score);
         }
       }
