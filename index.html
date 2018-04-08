@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css">
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/script.js"></script>
+    <title>Dice</title>
+  </head>
+
+  <body>
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-4"> <img src="image/1.gif"> </div>
+        <div class="col-md-4 animated shake">
+          <h1>The P.P. Dice</h1> </div>
+        <div class="col-md-4"> <img src="image/pig2.gif"> </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"> </div>
+      <div class="col-md-6">
+        <div class="click" href="#">Rules of P.Pig.Dice:</div>
+        <div class="showup">
+          <div class="row">
+            <ol>
+              <li>Write your names on the input form then touch start button </li>
+              <li>Both participants can roll the dice 6times </li>
+              <li>When you roll the dice and it falls on one then you lose and no points will be counted</li>
+              <li>When you roll the dice the points will count on the count box when you press End button to switch to your partner</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3"> </div>
+    </div>
+    <div class="container-play">
+      <div class="row">
+        <h2>Competitors:</h2>
+        <form id="one">
+          <div class="col-md-6">
+            <div class="contender1"> <label for="contender1">Participant One</label> <input type="text" required class="form-control" id="contender1"> </div>
+          </div>
+          <div class="col-md-6">
+            <div class="contender2"> <label for="contender2">Participant Two</label> <input required type="text" class="form-control" id="contender2"> </div>
+          </div>
+          <div class="comp"> <label for="Computer">Computer</label> <input type="checkbox" id="Computer"> </div><button type="submit" class="btn-dice" href="#">Play Dice</button> </form>
+      </div>
+      <div id="game">
+        <div class="row">
+          <div id="player1-info" class="containerP1">
+            <div>Name: <span id="player1-name"></span></div>
+            <div>Score: <span id='score0'>NaN</span></div>
+          </div>
+          <div id="options">
+            <div id="turn"></div>
+            <div id="roll" class="container-roll">
+              <div class="row">
+                <div class="col-md-6">
+                  <div id="static-die"> Touch to roll dice:</div><button type="submit" class="btn-dice" href="#">Roll</button> </div>
+                <div class="col-md-6"> <img src="image/black.png"> </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div id="rolling-die"> Rolling:</div>
+                </div>
+                <div class="col-md-6"> <img src="image/roll.gif"> </div>
+              </div>
+            </div>
+            <div id="end" class="btn btn-warning">End</div>
+            <div class="container-turn-status">
+              <div>The new roll is:</div>
+              <div>Current score for this turn:</div>
+              <div id="rolled-1"> rolled a 1. <span class="player-name"></span>'s turn is over. </div>
+            </div>
+            <div id="change-player" class="container-btn-success"></div><button type="new-gameit" class="btn">Change Player</button> </div>
+          <div id="game-over"></div>
+          <div id="player2-info" class="containerP2">
+            <div>Name:</div>
+            <div>Score:</div>
+          </div>
+          <div class="container-turn-status">
+            <div>The new roll is:</div>
+            <div>Current score for this turn:</div>
+            <div id="rolled-1"> rolled a 1. <span class="player-name"></span>'s turn is over. </div>
+          </div>
+          <div id="new-game" class="btn-btn-new-game">New game</div><button type="new-gameit" class="btn-new">New Game</button> </div>
+      </div>
+    </div>
+    <footer> </footer>
+  </body>
+
+</html>
