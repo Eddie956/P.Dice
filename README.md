@@ -20,5 +20,6 @@ For any queries and complement one may contact me or email me through the detail
 *contact:0754126896
 *e-mail:dhgdyuij@gmail.com
 ### License
-*MIT
+*MIT  
+copyright (c) 2018 **Eddie**
   
