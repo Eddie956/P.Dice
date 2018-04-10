@@ -24,7 +24,7 @@
     <div class="row">
       <div class="col-md-3"> </div>
       <div class="col-md-6">
-        <div class="click" href="#">Rules of P.Pig.Dice:</div>
+        <div class="click" href="#">Rules of P.Pig.Dice</div>
         <div class="showup">
           <div class="row">
             <ol>
@@ -38,59 +38,57 @@
       </div>
       <div class="col-md-3"> </div>
     </div>
-    <div class="container-play">
+    <div class="competitor">
       <div class="row">
-        <h2>Competitors:</h2>
-        <form id="one">
-          <div class="col-md-6">
-            <div class="contender1"> <label for="contender1">Participant One</label> <input type="text" required class="form-control" id="contender1"> </div>
+
+        <h3 id="Fun">Lets Have Fun</h3>
+        <form id="game">
+          <div class="form-group">
+            <label for="enter-part1">Participant One</label>
+            <input id="enter-part1" class="form-control" type="text" placeholder="Enter name">
           </div>
-          <div class="col-md-6">
-            <div class="contender2"> <label for="contender2">Participant Two</label> <input required type="text" class="form-control" id="contender2"> </div>
+          <div class="form-group">
+            <label for="enter-part2">Participant Two</label>
+            <input id="enter-part2" class="form-control" type="text" placeholder="Enter name">
           </div>
-          <div class="comp"> <label for="Computer">Computer</label> <input type="checkbox" id="Computer"> </div><button type="submit" class="btn-dice" href="#">Play Dice</button> </form>
-      </div>
-      <div id="game">
-        <div class="row">
-          <div id="player1-info" class="containerP1">
-            <div>Name: <span id="player1-name"></span></div>
-            <div>Score: <span id='score0'>NaN</span></div>
-          </div>
-          <div id="options">
-            <div id="turn"></div>
-            <div id="die-Roll" class="container-roll">
-              <div class="row">
-                <div class="col-md-6">
-                  <div id="static-dice"> Touch to roll dice:</div><button type="submit" class="btn-dice" href="#">Roll</button> </div>
-                <div class="col-md-6"> <img src="image/black.png"> </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div id="rolling-dice"> Rolling:</div>
-                </div>
-                <div class="col-md-6"> <img src="image/roll.gif"> </div>
-              </div>
-            </div>
-            <div id="endTurn" class="btn btn-warning">End</div>
-            <div class="container-turn-status">
-              <div>The new roll is:</div>
-              <div>Current score for this turn:</div>
-              <div id="rolled-1"> rolled a 1. <span class="player-name"></span>'s turn is over. </div>
-            </div>
-            <div id="change-player" class="container-btn-success"></div><button type="new-gameit" class="btn">Change Player</button> </div>
-          <div id="game-over"></div>
-          <div id="player2-info" class="containerP2">
-            <div>Name:</div>
-            <div>Score:</div>
-          </div>
-          <div class="container-turn-status">
-            <div>The new roll is:</div>
-            <div>Current score for this turn:</div>
-            <div id="rolled-1"> rolled a 1. <span class="player-name"></span>'s turn is over. </div>
-          </div>
-          <div id="new-game" class="btn-btn-new-game">New Game</div><button type="new-gameit" class="btn-new">New Game</button> </div>
+          <button class="btn btn-primary" type="submit">Start</button>
+        </form>
       </div>
     </div>
+
+
+
+    <div class="container game">
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Participant One</h3>
+          <h4 id="participant-one-name"></h4>
+          <p>Score:</p>
+          <p><span class="p1-total-score"></span></p>
+        </div>
+
+        <div class="col-md-4">
+          <h3>Rolled Dice</h3>
+          <h1 id="chuckling"><img src="image/me.jpg" alt=""></h1>
+          <h3>possible points * </h3>
+          <h1 id="overall">0</h1>
+          <button id="btn-roll" class="btn btn-primary">!!Roll!!</button>
+          <button id="hold" class="btn" disabled="true">!!Hold!!</button>
+          <br>
+          <br>
+          <p id="notice"></p>
+          <p id="player-turn-score"></p>
+        </div>
+
+        <div class="col-md-4">
+          <h3>Participant Two</h3>
+          <h4 id="participant-two-name"></h4>
+          <p>Score:</p>
+          <p><span class="p2-total-score"></span></p>
+        </div>
+      </div>
+    </div>
+
     <footer> </footer>
   </body>
 

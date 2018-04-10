@@ -1,104 +1,102 @@
-// Bussiness logic
-var competitorsArray = []
-var turnRollArray = []
-
-function Competitors(participantName, score) {
-  this.participantName = participantName;
-  this.score = score;
-  prayerArray.push(this);
-}
-Array.prototype.sum = function() {
-  return this.reduce(function(a, b) {
-    return a, +b
-  });
-}
+var Participant = function(turn) {
+  this.scoreTotal = 0;
+  this.currentScore = 0;
+  this.turn = turn;
+};
+Participant.prototype.takeTurn = function() {
+  if(this.turn === true) {
+    this.turn = false;
+  } else {
+    this.turn = true;
+  }
+};
+Participant.prototype.roll = function() {
+  var rand = Math.floor(Math.random() * 6) + 1;
+  this.currentScore = rand;
+};
+Participant.prototype.addPoints = function(rollPoints) {
+  this.scoreTotal += rollPoints;
+};
+var participant1 = new Participant(true);
+var participant2 = new Participant(false);
+var totalRoll;
 $(document).ready(function() {
-      $("form#participantNameForm").submit(function(event) {
-        event.preventDefault();
-        var ParticipantOneName = $("#contender1Name").val();
-        var ParticipantTwoName = $("#contender2Name").val();
-        var ParticipantOne = new Contender(ParticipantOneName, 0);
-        var ParticipantTwo = new Contender(ParticipantTwoName, 0);
-        $("#contener1Display").text(competitorsArray[0].participantName + "'s turn").show();
-        showNamesAndScores();
-        $("form").hide();
-        $(".gameStuff").show();
-      });
-      $("#dieRoll").click(function(event) {
-        event.preventDefault();
-        $("#rollResult").show();
-        $(".showTurnTotal").show();
-        var randomRoll = (1 + Math.floor(Math.random() * 6));
-        $("#rollResult").text(randomRoll);
-        if(randomRoll >= 2) {
-          turnRollArray.push(randomRoll);
-          $("#turnTotal").text(turnRollArray.sum());
+  var participantOneName;
+  var participantTwoName;
+  totalRoll = parseInt($("#overall").text());
+  $(".click").click(function() {
+    $(".showup").toggle();
+  });
+  $("#btn-roll").click(function() {
+    if(participant1.turn === true) {
+      if(participant1.scoreTotal >= 100 || participant2.scoreTotal >= 100) {
+        $("button").attr("readonly", true);
+        alert("You have won;)");
+      } else {
+        participant1.roll();
+        if(participant1.currentScore === 1) {
+          participant1.takeTurn();
+          participant2.takeTurn();
+          totalRoll = 0;
+          $("#hold").attr("disabled", true).removeClass("btn-alert");
+          $("#game").text("0");
+          $("chuckling").text(participant1.currentScore);
+          $(this).text("Roll");
+          $("#notice").text(participantTwoName + ", GO!");
         } else {
-          rollOneChangeCompetitors();
-        }
-      });
-      $("#endTurn").click(function(event) {
-        changeCompetitors();
-        if(playersArray[0].score >= 100) {
-          alert(CompetitorsArray[0].participantName + " wins!!");
-          document.location.reload(true);
-        } else if(competitorsArray[1].score >= 100) {
-          alert(competitorsArray[1].playerName + " wins!!");
-          document.location.reload(true);
-        }
-      });
-
-      function showNamesAndScores() {
-        $("#contender1Name").text(contendersArray[0].playerName);
-        $("#contender2Name").text(contendersArray[1].playerName);
-        $("#contender1TotalScore").text(contendersArray[0].score);
-        $("#contender2TotalScore").text(contendersArray[1].score);
-      }
-
-      function rollOneChangePlayers() {
-        if($("#contender1Display").is(":visible")) {
-          turnRollArray = [0];
-          $("#turnTotal").text(turnRollArray);
-          setTimeout(function() {
-            alert("YOU ROLLED A 1- NO POINTS!!");
-          }, 50);
-          setTimeout(function() {
-            $("#contender2Display").text(playersArray[1].playerName + "'s turn").show();
-          }, 100);
-          $("#contender1Display").hide();
-          showNamesAndScores();
-        } else if($("#contender2Display").is(":visible")) {
-          turnRollArray = [0];
-          $("#turnTotal").text(turnRollArray);
-          setTimeout(function() {
-            alert("YOU ROLLED A 1- NO POINTS!!");
-          }, 50);
-          setTimeout(function() {
-            $("#contender1Display").text(playersArray[0].playerName + "'s turn").show();
-          }, 100);
-          $("#contender2Display").hide();
-          showNamesAndScores();
+          totalRoll += participant1.currentScore;
+          $("#hold").attr("disabled", false).addClass("btn-alert");
+          $("chuckling").text(participant1.currentScore);
+          $("#overall").text(totalRoll);
+          $(this).addClass("roll-again").text("Roll Again?");
         }
       }
-
-      function changePlayers() {
-        if($("#contender1Display").is(":visible")) {
-          competitorsArray[0].score = (competitorsArray[0].score += turnRollArray.sum());
-          alert("Congrats, " + competitorsArray[0].playerName + ", you got " + turnRollArray.sum() + " points!");
-          turnRollArray = [0];
-          $("#turnTotal").text(turnRollArray)
-          $("#contender1Display").hide();
-          $("#contender2Display").text(playersArray[1].playerName + "'s turn").show();
-          console.log(playersArray[0].score);
-          showNamesAndScores();
+    } else {
+      if(participant2.scoreTotal >= 100 || participant1.scoreTotal >= 100) {
+        $("button").attr("readonly", true);
+      } else {
+        participant2.roll();
+        if(participant2.currentScore === 1) {
+          participant1.takeTurn();
+          participant2.takeTurn();
+          totalRoll = 0;
+          $("#hold").attr("disabled", true).removeClass("btn-alert");
+          $("#overall").text("0");
+          $("chuckling").text(participant2.currentScore);
+          $(this).removeClass("roll-again").text("Roll");
+          totalRoll = 0;
+          $("#notice").text(participantOneName + ", GO!");
         } else {
-          alert("Congrats, " + playersArray[1].playerName + ", you got " + turnRollArray.sum() + " points!");
-          competitorsArray[1].score = (competitorsArray[1].score += turnRollArray.sum());
-          turnRollArray = [0];
-          $("#turnTotal").text(turnRollArray)
-          $("#contender2Display").hide();
-          $("#contender1Display").text(competitorsArray[0].playerName + "'s turn").show();
-          showNamesAndScores();
-          console.log(competitorsArray[1].score);
+          totalRoll += participant2.currentScore;
+          $("#hold").attr("disabled", false).addClass("btn-alert");
+          $(this).addClass("roll-again").text("Roll Again?");
+          $("#overall").text(totalRoll);
+          $("chuckling").text(participant2.currentScore);
         }
       }
+    }
+  });
+  $("#hold").click(function() {
+    if(participant1.turn === true) {
+      participant1.takeTurn();
+      participant2.takeTurn();
+      participant1.addPoints(totalRoll);
+      totalRoll = 0;
+      $(this).attr("disabled", true).removeClass("btn-alert");
+      $("#overall").text("0");
+      $(".p1-total-score").text(participant1.scoreTotal);
+      $("#btn-roll").text("Roll");
+      $("#notice").text(participantTwoName + ", your turn!");
+    } else {
+      participant1.takeTurn();
+      participant2.takeTurn();
+      participant2.addPoints(totalRoll);
+      totalRoll = 0;
+      $(this).attr("disabled", true).removeClass("btn-alert");
+      $("#overall").text("0");
+      $(".p2-total-score").text(participant2.scoreTotal);
+      $("#btn-roll").removeClass("roll-again").text("Roll");
+      $("#notice").text(participantOneName + ", your turn!");
+    }
+  });
+});

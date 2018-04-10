@@ -102,6 +102,7 @@ body {
   overflow-x: hidden;
   font-size: 17px;
   background-color: #cc80ff;
+  font-style: italic;
 }
 a {
   text-decoration: none;
@@ -111,13 +112,14 @@ a {
   display: none;
 }
 .click {
-  background: #f62525;
+  background-color: #f62525;
   padding: 10px 30px;
   width: 50%;
   margin: 0 25%;
   float: none;
   text-align: center;
-  color: #fff;
+  color: #1aff1a;
+  overflow-x: hidden;
 }
 .jumbotron {
   background-image: url("../image/two.png");
@@ -125,51 +127,8 @@ a {
   text-align: center;
   font-weight: bold;
 }
-.container-rules {
-  font-weight: bold;
-  color: blue;
-}
-#r {
-  color: red;
-  padding-right: 10%;
-  font-weight: bold;
-}
-.container-play {
-  width: 90%;
-  height: 100%;
-  padding-left: 100px;
-}
-.comp {
-  text-align: center;
-  padding-top: 50px;
-}
-.contender1 {
-  font-size: 2em;
-}
 li {
   font-size: 1em;
-}
-.contender2 {
-  font-size: 2em;
-}
-.comp {
-  padding-top: 90px;
-  font-size: 2em;
-}
-.btn {
-  text-align: center;
-  width: 150px;
-  margin: 0 auto;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  margin-top: 10%;
-  margin-bottom: 0%
-}
-.switch {
-  padding-top: 50px;
-  margin-top: auto;
-  float: none;
 }
 head font-family: 'Lobster',
 cursive;
@@ -179,60 +138,18 @@ cursive;
   padding-top: 100px;
   overflow-x: hidden;
 }
-#new-game {
-  display: none;
-  opacity: 0;
-}
-.containerP1 {
-  color: blue;
-  background-color: #cccccc;
-  text-align: center;
-  padding-bottom: 50px;
-  padding-top: 50px;
-  padding-right: 600px;
-}
-.btn-dice {
-  margin-bottom: 100px;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  margin-top: 10%;
-  overflow-x: hidden;
-}
-.containerP2 {
-  color: #ff6699;
-  background-color: #ebebe0;
-  text-align: center;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  padding-right: 600px;
-  margin-top: 50px;
-}
-.btn-new {
-  color: green;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  margin-top: 10%;
-  margin-bottom: 10%
-  /* background-color: #ff6600; */
-}
 img {
   width: 200px;
   height: auto;
 }
-.container-turn-status {
-  text-align: center;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  background-color: #ccffff;
-  margin-top: 5%;
-  padding-right: 500px;
-}
-.container-roll {
+.competitor {
   font-size: 1em;
   text-align: center;
+  font-family: monospace;
   padding-top: 5%;
+}
+#Fun {
+  text-align: center;
+  padding-left: 3%;
+  font-size: 2em;
 }
